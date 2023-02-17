@@ -37,7 +37,7 @@ pipeline {
                     allowAnyHosts:true
                 ],
                 from: 'app/build/',
-                into: '/usr/share/nginx/html/'
+                into: '/usr/share/nginx/html'
         }
     }
   }
