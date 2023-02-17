@@ -26,8 +26,7 @@ pipeline {
     }
     stage('Deploy') {
         steps {
-            sshCommand remoteUser: remoteUser, remoteHost: remoteHost, command: "mkdir -p ${remoteDir}", password: password
-            sshPut remoteUser: remoteUser, remoteHost: remoteHost, from: 'build_${params.DEPLOY_BUILD_NO}', into: remoteDir, password: password
+            sshPut remoteUser:'test', remoteHost: '172.17.0.3', from: 'build_${params.DEPLOY_BUILD_NO}', into: '/usr/share/nginx/html/', password: 'test'
         }
     }
   }
