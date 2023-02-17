@@ -5,7 +5,7 @@ pipeline {
     
     stage('Build') {
       steps {
-        sh 'docker build -t billiondollarapp:${BUILD_NUMBER} .'
+        sh 'sudo docker build -t billiondollarapp:${BUILD_NUMBER} .'
       }
     }
 
