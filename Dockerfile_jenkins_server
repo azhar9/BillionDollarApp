@@ -7,5 +7,6 @@ RUN apt-get update && \
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt -y install nodejs
 RUN npm update -g npm
-
+RUN mkdir -p /var/jenkins_home/builds/
+RUN chmod 777 /var/jenkins_home/builds/ && chown jenkins /var/jenkins_home/builds/
 USER jenkins
