@@ -37,8 +37,8 @@ pipeline {
                     allowAnyHosts:true,
                     useSftp : false
                 ],
-                from: 'app/build/',
-                into: '/usr/share/nginx/html'
+                from: 'app/build/*',
+                into: '/var/www/html'
         }
     }
   }
