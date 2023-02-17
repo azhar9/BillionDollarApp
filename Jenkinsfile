@@ -22,6 +22,7 @@ pipeline {
         cd app
         zip -r build_${BUILD_NUMBER}.zip build
         ls
+        cp build_${BUILD_NUMBER}.zip /home/
         cd ..
         """
       }
