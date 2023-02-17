@@ -1,0 +1,21 @@
+pipeline {
+  agent any
+  parameters {
+        string(name: 'DEPLOY_BUILD_NO', defaultValue: '', description: 'Build number to deploy')
+    }
+  stages {
+    
+    stage('Deploy') {
+      steps {
+        sh"""
+        ls
+        cd app
+        ls
+        unzip build_${params.DEPLOY_BUILD_NO}.zip
+        sshpass -p 'test' ssh test@nginx "scp -r build_${params.DEPLOY_BUILD_NO}/* test@nginx:/usr/share/nginx/html/"
+        cd ..
+        """
+      }
+    }
+  }
+}

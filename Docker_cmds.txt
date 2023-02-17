@@ -10,4 +10,4 @@ NGINX server commands:
 		docker build -t nginx-server -f ./Dockerfile_production_server .
 
 	To run our nginx docker image:
-		docker run --name nginx -p 80:80 -p 22:22 nginx-server
+		docker run --name nginx -d -p 80:80 -p 22:22 nginx-server
