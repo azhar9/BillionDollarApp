@@ -20,6 +20,8 @@ pipeline {
         ls
         cp /var/jenkins_home/builds/build_${params.DEPLOY_BUILD_NO}.zip .
         unzip -o build_${params.DEPLOY_BUILD_NO}.zip
+        ls
+        pwd
         cd ..
         """
       }
