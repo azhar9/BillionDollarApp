@@ -6,10 +6,10 @@ pipeline {
     stage('Build') {
       steps {
         sh"""
-        ll
+        ls
         cd app
         npm run build
-        ll
+        ls
         cd ..
         """
       }
@@ -20,7 +20,7 @@ pipeline {
         sh"""
         cd app
         zip -r build_${BUILD_NUMBER}.zip build
-        ll
+        ls
         cd ..
         """
       }
