@@ -28,7 +28,14 @@ pipeline {
     }
     stage('Deploy') {
         steps {
-            sshPut user:'test', remote: '172.17.0.3', from: "app/build/", into: '/usr/share/nginx/html/', password: 'test'
+            sshPut remote: [
+                    host: '172.17.0.3',
+                    port: 22,
+                    user: 'test',
+                    password: 'test'
+                ],
+                from: 'app/build/',
+                into: '/usr/share/nginx/html/'
         }
     }
   }
