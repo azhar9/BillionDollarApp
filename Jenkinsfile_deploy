@@ -39,6 +39,16 @@ pipeline {
                 ],
                 from: 'app/build/',
                 into: '/var/www/html'
+
+          sshCommand remote: [
+                    name: 'my-remote-machine',
+                    host: '172.17.0.3',
+                    port: 22,
+                    user: 'test',
+                    password: 'test',
+                    allowAnyHosts:true
+                ],
+                command: 'mv /var/www/html/build/* /var/www/html/'
         }
     }
   }

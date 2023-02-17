@@ -5,5 +5,8 @@ RUN apt-get update && apt-get install -y nginx openssh-server openssh-client
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
 
 RUN  echo 'test:test' | chpasswd
+RUN mkdir -p /var/www/html/build/
+RUN chown -R test:root /var/www/html/
+RUN rm /var/www/html/index.nginx-debian.html
 
 CMD service ssh start && nginx -g "daemon off;"
