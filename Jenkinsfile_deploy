@@ -34,7 +34,8 @@ pipeline {
                     port: 22,
                     user: 'test',
                     password: 'test',
-                    allowAnyHosts:true
+                    allowAnyHosts:true,
+                    useSftp : false
                 ],
                 from: 'app/build/',
                 into: '/usr/share/nginx/html'
