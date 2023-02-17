@@ -3,6 +3,9 @@ FROM jenkins/jenkins:lts-jdk11
 USER root
 
 RUN apt-get update && \
-    apt-get install -y nodejs npm zip unzip
+    apt-get install -y npm zip unzip curl
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt -y install nodejs
+RUN npm update -g npm
 
 USER jenkins
