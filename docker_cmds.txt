@@ -8,3 +8,4 @@ For billiondollarapp:
 docker build -t billiondollarapp:1 .
 
 docker run -p 3000:3000 -d billiondollarapp:1
+
