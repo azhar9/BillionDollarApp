@@ -3,9 +3,16 @@ pipeline {
   parameters {
         string(name: 'DEPLOY_BUILD_NO', defaultValue: '', description: 'Build number to deploy')
     }
+
+  environment {
+        remoteHost = '172.17.0.3'
+        remoteUser = 'test'
+        remoteDir = '/usr/share/nginx/html/'
+        password = 'test'
+  }
   stages {
     
-    stage('Deploy') {
+    stage('Extract') {
       steps {
         sh"""
         ls
@@ -13,10 +20,15 @@ pipeline {
         ls
         cp /var/jenkins_home/builds/build_${params.DEPLOY_BUILD_NO}.zip .
         unzip -o build_${params.DEPLOY_BUILD_NO}.zip
-        sshpass -p 'test' ssh test@172.17.0.3 "scp -r build_${params.DEPLOY_BUILD_NO}/* test@172.17.0.3:/usr/share/nginx/html/"
         cd ..
         """
       }
+    }
+    stage('Deploy') {
+        steps {
+            sshCommand remoteUser: remoteUser, remoteHost: remoteHost, command: "mkdir -p ${remoteDir}", password: password
+            sshPut remoteUser: remoteUser, remoteHost: remoteHost, from: 'build_${params.DEPLOY_BUILD_NO}', into: remoteDir, password: password
+        }
     }
   }
 }
