@@ -33,7 +33,8 @@ pipeline {
                     host: '172.17.0.3',
                     port: 22,
                     user: 'test',
-                    password: 'test'
+                    password: 'test',
+                    allowAnyHosts:true
                 ],
                 from: 'app/build/',
                 into: '/usr/share/nginx/html/'
