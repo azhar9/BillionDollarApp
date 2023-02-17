@@ -5,13 +5,24 @@ pipeline {
     
     stage('Build') {
       steps {
-        sh 'docker build -t billiondollarapp:${BUILD_NUMBER} .'
+        sh"""
+        ll
+        cd app
+        npm run build
+        ll
+        cd ..
+        """
       }
     }
 
-    stage('Push') {
+    stage('Zipping') {
       steps {
-        sh 'echo "hello world"'
+        sh"""
+        cd app
+        zip -r build_${BUILD_NUMBER}.zip build
+        ll
+        cd ..
+        """
       }
     }
   }

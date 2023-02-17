@@ -3,6 +3,6 @@ FROM jenkins/jenkins:lts-jdk11
 USER root
 
 RUN apt-get update && \
-    apt-get install -y nodejs npm
+    apt-get install -y nodejs npm zip unzip
 
 USER jenkins
