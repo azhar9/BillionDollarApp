@@ -1,0 +1,10 @@
+To spin up Jenkins:
+
+docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk11
+
+
+For billiondollarapp:
+
+docker build -t billiondollarapp:1 .
+
+docker run -p 3000:3000 -d billiondollarapp:1
