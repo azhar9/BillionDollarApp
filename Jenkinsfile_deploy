@@ -13,7 +13,7 @@ pipeline {
         ls
         cp /var/jenkins_home/builds/build_${params.DEPLOY_BUILD_NO}.zip .
         unzip build_${params.DEPLOY_BUILD_NO}.zip
-        sshpass -p 'test' ssh test@nginx "scp -r build_${params.DEPLOY_BUILD_NO}/* test@nginx:/usr/share/nginx/html/"
+        sshpass -p 'test' ssh test@172.17.0.3 "scp -r build_${params.DEPLOY_BUILD_NO}/* test@172.17.0.3:/usr/share/nginx/html/"
         cd ..
         """
       }
