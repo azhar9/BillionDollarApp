@@ -8,6 +8,7 @@ pipeline {
         sh"""
         ls
         cd app
+        npm install
         npm run build
         ls
         cd ..
