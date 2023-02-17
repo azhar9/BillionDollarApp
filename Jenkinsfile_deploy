@@ -59,7 +59,7 @@ pipeline {
                     password: 'test',
                     allowAnyHosts:true
                 ],
-                command: 'rm -rf /var/www/html/; mv /var/www/builds/build/* /var/www/html/'
+                command: 'rm -rf /var/www/html/*; mv /var/www/builds/build/* /var/www/html/'
         }
     }
   }
