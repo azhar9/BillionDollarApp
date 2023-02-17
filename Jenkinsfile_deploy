@@ -29,6 +29,7 @@ pipeline {
     stage('Deploy') {
         steps {
             sshPut remote: [
+                    name: 'my-remote-machine',
                     host: '172.17.0.3',
                     port: 22,
                     user: 'test',
