@@ -52,8 +52,14 @@ docker stop <container_id>
 
 ## Setting up a Jenkins CI/CD Pipeline
 
-### 1. Setup Jenkins
-   - Start Jenkins (refer to the installation guide for your OS).
+   - Setup Jenkins Using the provided docker commands
+      ```bash
+      docker build -t jenkins-server -f ./Dockerfile_jenkins_server .
+      ```
+   - To run our Jenkins Docker image, use the following command:
+      ```bash
+        docker run --name jenkins -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins-server
+      ```
    - Open your browser and navigate to [http://localhost:8080/](http://localhost:8080/) to access the Jenkins dashboard.
    - Complete the initial setup.
 
